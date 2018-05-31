@@ -51,7 +51,7 @@ int main(){
 		<< "4. Mokachino" << endl;
 		cin >> TipoCafe;
 
-		while(TipoCafe != "0" and TipoCafe != "1" and TipoCafe != "2" and TipoCafe != "3")
+		while(TipoCafe != "1" and TipoCafe != "2" and TipoCafe != "3" and TipoCafe != "4")
 		{
 			cout << "Dato erroneo " << endl;
 
@@ -63,20 +63,20 @@ int main(){
 			cin >> TipoCafe;
 		}	
 
-		if (TipoCafe== "0")
+		if (TipoCafe== "1")
 			TipoCafe="00";
-		else if (TipoCafe == "1")
-			TipoCafe = "01";
 		else if (TipoCafe == "2")
+			TipoCafe = "01";
+		else if (TipoCafe == "3")
 			TipoCafe = "10";
 		else 
 			TipoCafe = "11";
 
 
-		cout << "Cantidad: "<< endl;
+		cout << "Puede hacer un máximo de 3 pedidos, indique cantidad: "<< endl;
 		cin >> cantidad;
 
-		while(cantidad != "0" and cantidad != "1" and cantidad != "2" and cantidad != "3")
+		while(cantidad != "1" and cantidad != "2" and cantidad != "3")// and cantidad != "4")
 		{
 			cout << "Dato erroneo " << endl;
 			cout << "Cantidad: "<< endl;
@@ -93,9 +93,9 @@ int main(){
 		cad1= opcion_s + TipoCafe + cantidad;
 
 		memoryFile << cad1 << "\n";
-
+/*
 		opcion_s = "01";
-		
+
 		cout << "Monto a ingresar:" << endl;
 		cin >> monto;
 
@@ -114,7 +114,7 @@ int main(){
 
 		cad1= opcion_s + TipoCafe + monto;
 
-		memoryFile << cad1 << "\n";
+		memoryFile << cad1 << "\n";*/
 
 		cout << "¿Desea hacer otro pedido?" << endl 
 		<< "1. Hacer Pedido" << endl 
