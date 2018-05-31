@@ -72,6 +72,7 @@ int main(){
 		else 
 			TipoCafe = "11";
 
+		system("clear");
 
 		cout << "Puede hacer un máximo de 3 pedidos, indique cantidad: "<< endl;
 		cin >> cantidad;
@@ -115,7 +116,7 @@ int main(){
 		cad1= opcion_s + TipoCafe + monto;
 
 		memoryFile << cad1 << "\n";*/
-
+		system("clear");
 		cout << "¿Desea hacer otro pedido?" << endl 
 		<< "1. Hacer Pedido" << endl 
 		<< "2. Salir" << endl;
