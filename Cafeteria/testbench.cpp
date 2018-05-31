@@ -11,7 +11,7 @@ void testbench::test(){
 
 	  wait();
 
-	  if(i>3)
+	  //if(i>3)
 	  	print();
 	}
 
@@ -21,7 +21,7 @@ void testbench::test(){
 
 
 void testbench::print(){
-	std::cout << "\t\t" << sc_time_stamp() << "\t\t|| \t" << pc_out.read() << "\t\t || " << r_in.read() << "\n";
+	std::cout << "\t\t" << sc_time_stamp() << "\t\t|| \t" << (pc_out.read()) << "\t\t || " << r_in.read() << "\n";
 
  // std::cout << "\t\t" << sc_time_stamp() <<"\t\t || " << pc_out.read() 
 	//<< " \t\t " << r_in.read() << "\n";

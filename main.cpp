@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include "ccolor.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main(){
 	string cantidad;
 	string monto;// Monedas de 1$, 2$, 3$
 	string  cad1; 
-
+	zkr::cc color;
 
 	ofstream memoryFile; 
 	memoryFile.open("InstructionMemory.txt", ios::out);// ios::in | ios::out);
@@ -21,17 +22,17 @@ int main(){
 
 	//MENU
 	system("clear");
-	cout << "\t\t\t\t\t\t**************************************" << endl;
+	cout <<zkr::cc::fore::green<< "\t\t\t\t\t\t**************************************" << endl;
 	cout << "\t\t\t\t\t\t**************************************" << endl;
 	cout << "\t\t\t\t\t\t**                                  **" << endl;
-	cout << "\t\t\t\t\t\t**   Bienvenido a la Cafetería MEK  **" << endl;
-	cout << "\t\t\t\t\t\t**                                  **" << endl;
+	cout <<zkr::cc::fore::white << "\t\t\t\t\t\t**   Bienvenido a la Cafetería MEK  **" << endl;
+	cout <<zkr::cc::fore::green<< "\t\t\t\t\t\t**                                  **" << endl;
 	cout << "\t\t\t\t\t\t**************************************" << endl;
 	cout << "\t\t\t\t\t\t**************************************" << endl << endl;
 	//cout << "\t\t\t\t\t\t\t*******************************"<< endl;
 
-	cout << "\t\t\t\t\t\t\t\tMenú" << endl << endl
-	<< "\t\t\t\t\t\t\t1. Hacer Pedido" << endl 
+	cout <<zkr::cc::fore::white<< "\t\t\t\t\t\t\t\tMenú" << endl << endl
+	<< zkr::cc::fore::green << "\t\t\t\t\t\t\t1. Hacer Pedido" << endl 
 	<< "\t\t\t\t\t\t\t2. Salir" << endl;
 	cin >> opcion;
 
@@ -39,10 +40,10 @@ int main(){
 
 		while(opcion != 1)
 		{
-			cout << "Dato erroneo " << endl;
+			cout <<zkr::cc::fore::red<< "Dato erroneo " << endl;
 			//system("clear");
-			cout << "Menú" << endl 
-			<< "1. Hacer Pedido" << endl 
+			cout <<zkr::cc::fore::white<< "Menú" << endl; 
+			cout <<zkr::cc::fore::green<< "1. Hacer Pedido" << endl 
 			<< "2. Salir" << endl;
 			cin >> opcion;
 		}
@@ -50,8 +51,8 @@ int main(){
 		//system("clear");
 
 		opcion_s = "00";
-		cout <<"\t\t\t\t\t\t\tTipo de café:" << endl 
-		<< "\t\t\t\t\t\t\t1. Frapuchino " << endl 
+		cout <<zkr::cc::fore::white<<"\t\t\t\t\t\t\tTipo de café:" << endl << endl;
+		cout <<zkr::cc::fore::green<< "\t\t\t\t\t\t\t1. Frapuchino " << endl 
 		<< "\t\t\t\t\t\t\t2. Espresso" << endl 
 		<< "\t\t\t\t\t\t\t3. Capuchino" << endl 
 		<< "\t\t\t\t\t\t\t4. Mokachino" << endl;
@@ -59,10 +60,10 @@ int main(){
 
 		while(TipoCafe != "1" and TipoCafe != "2" and TipoCafe != "3" and TipoCafe != "4")
 		{
-			cout << "\t\t\t\t\t\t\tDato erroneo " << endl;
+			cout <<zkr::cc::fore::red<< "\t\t\t\t\t\t\tDato erroneo " << endl;
 
-			cout <<"\t\t\t\t\t\t\tTipo de café:" << endl 
-			<< "\t\t\t\t\t\t\t1. Frapuchino " << endl 
+			cout <<zkr::cc::fore::white<<"\t\t\t\t\t\t\tTipo de café:" << endl;
+			cout <<zkr::cc::fore::green<< "\t\t\t\t\t\t\t1. Frapuchino " << endl 
 			<< "\t\t\t\t\t\t\t2. Espresso" << endl 
 			<< "\t\t\t\t\t\t\t3. Capuchino" << endl 
 			<< "\t\t\t\t\t\t\t4. Mokachino" << endl;
@@ -80,13 +81,13 @@ int main(){
 
 		//system("clear");
 
-		cout << "\t\t\t\t\tPuede hacer un máximo de 3 pedidos, indique cantidad: "<< endl;
+		cout <<zkr::cc::fore::white<< "\t\t\t\t\tPuede hacer un máximo de 3 pedidos, indique cantidad: "<< endl;
 		cin >> cantidad;
 
 		while(cantidad != "1" and cantidad != "2" and cantidad != "3")// and cantidad != "4")
 		{
-			cout << "\t\t\t\t\t\t\tDato erroneo " << endl;
-			cout << "\t\t\t\t\t\t\tCantidad: "<< endl;
+			cout <<zkr::cc::fore::red<< "\t\t\t\t\t\t\tDato erroneo " << endl;
+			cout <<zkr::cc::fore::white<< "\t\t\t\t\t\t\tIndique cantidad: "<< endl;
 			cin >> cantidad;	
 		}
 	
@@ -102,8 +103,8 @@ int main(){
 		memoryFile << cad1 << "\n";
 
 		//system("clear");
-		cout << "\t\t\t\t\t\t\t¿Desea hacer otro pedido?" << endl 
-		<< "\t\t\t\t\t\t\t1. Hacer Pedido" << endl 
+		cout <<zkr::cc::fore::white<< "\t\t\t\t\t\t\t¿Desea hacer otro pedido?" << endl;
+		cout <<zkr::cc::fore::green << "\t\t\t\t\t\t\t1. Hacer Pedido" << endl 
 		<< "\t\t\t\t\t\t\t2. Salir" << endl;
 		cin >> opcion;
 	}
