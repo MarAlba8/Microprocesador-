@@ -22,87 +22,74 @@ public:
 
       SC_CTOR(cafeteria){
 
-            SC_METHOD(split)  
-            sensitive << reg6_1_sg ; 
+        SC_METHOD(split)  
+        sensitive << reg6_1_sg ; 
 
-            alu1 = new alu("alu1");
-            registerfile1 = new registerfile("registerfile1");
-            reg2_1 = new regs2("reg2_1");
-            reg2_2 = new regs2("reg2_2");
-            reg6_1 = new regs6("reg6_1");
-            reg32_1 = new regs32("reg32_1");
-            reg32_2 = new regs32("reg32_2");
-            reg32_3 = new regs32("reg32_3");
-            memory = new InstrMemory("memory");
+        alu1 = new alu("alu1");
+        registerfile1 = new registerfile("registerfile1");
+        reg2_1 = new regs2("reg2_1");
+        reg6_1 = new regs6("reg6_1");
+        reg32_1 = new regs32("reg32_1");
+        reg32_2 = new regs32("reg32_2");
+        reg32_3 = new regs32("reg32_3");
+        memory = new InstrMemory("memory");
 
-            //----------------------------------------------------------------------------------------------------------------------------
-            //ETAPA FETCH
-            //----------------------------------------------------------------------------------------------------------------------------    
-            memory->dir_in(pc_in);
-            memory->instr_out(instr_sg);
-            //----------------------------------------------------------------------------------------------------------------------------      
-            reg6_1 -> data_in (instr_sg);
-            reg6_1 -> clk_in (clk_in);
-            reg6_1 -> data_out (reg6_1_sg);	
+        //----------------------------------------------------------------------------------------------------------------------------
+        //ETAPA FETCH
+        //----------------------------------------------------------------------------------------------------------------------------    
+        memory->dir_in(pc_in);
+        memory->instr_out(instr_sg);
 
-            //----------------------------------------------------------------------------------------------------------------------------
-            //ETAPA DECODE
-            //---------------------------------------------------------------------------------------------------------------------------- 
-            registerfile1 -> dira_in(dira);
-            registerfile1 -> dirb_in(dirb);
-            registerfile1 -> ra_out(da);
-            registerfile1 -> rb_out(db);
-            registerfile1 -> clk(clk_in);
-            //----------------------------------------------------------------------------------------------------------------------------
+        reg6_1 -> data_in (instr_sg);
+        reg6_1 -> clk_in (clk_in);
+        reg6_1 -> data_out (reg6_1_sg);	
 
-            //Voy al 2do PIPE y almaceno los datos pertinentes en los registros adecuados para ello
-            reg32_1 -> data_in (da);
-            reg32_1 -> clk_in (clk_in);
-            reg32_1 -> data_out (reg32_1_sg);
+        //----------------------------------------------------------------------------------------------------------------------------
+        //ETAPA DECODE
+        //---------------------------------------------------------------------------------------------------------------------------- 
+        registerfile1 -> dira_in(dira);
+        registerfile1 -> dirb_in(dirb);
+        registerfile1 -> ra_out(da);
+        registerfile1 -> rb_out(db);
+        registerfile1 -> clk(clk_in);
 
-            reg32_2 -> data_in (db);
-            reg32_2 -> clk_in (clk_in);
-            reg32_2 -> data_out (reg32_2_sg);
+        reg32_1 -> data_in (da);
+        reg32_1 -> clk_in (clk_in);
+        reg32_1 -> data_out (reg32_1_sg);
 
-            reg2_1 -> data_in (dirc);
-            reg2_1 -> clk_in (clk_in);
-            reg2_1 -> data_out (reg2_1_sg); 
+        reg32_2 -> data_in (db);
+        reg32_2 -> clk_in (clk_in);
+        reg32_2 -> data_out (reg32_2_sg);
 
-            reg2_2 -> data_in (op);
-            reg2_2 -> clk_in (clk_in);
-            reg2_2 -> data_out (reg2_2_sg);		
+        reg2_1 -> data_in (op);
+        reg2_1 -> clk_in (clk_in);
+        reg2_1 -> data_out (reg2_1_sg);		
 
-            //----------------------------------------------------------------------------------------------------------------------------
-            //ETAPA EXECUTE
-            //----------------------------------------------------------------------------------------------------------------------------
-            //Ejecuta la instruccion en la alu con los operando a y b, segun la operacion OP
-            alu1 -> ra_in (reg32_1_sg);
-            alu1 -> rb_in (reg32_2_sg);
-            alu1 -> op_in (reg2_2_sg);
-            alu1 -> r_out (alu1_sg);
+        //----------------------------------------------------------------------------------------------------------------------------
+        //ETAPA EXECUTE
+        //----------------------------------------------------------------------------------------------------------------------------
 
-            //----------------------------------------------------------------------------------------------------------------------------
-            //ETAPA ACCESs MEMORY 
-            //----------------------------------------------------------------------------------------------------------------------------
+        alu1 -> ra_in (reg32_1_sg);
+        alu1 -> rb_in (reg32_2_sg);
+        alu1 -> op_in (reg2_1_sg);
+        alu1 -> r_out (alu1_sg);
 
-            reg32_3 -> data_in (alu1_sg);
-            reg32_3 -> clk_in (clk_in);
-            reg32_3 -> data_out (r_out);      //----------------------------------------------------------------------------------------------------------------------------
+        reg32_3 -> data_in (alu1_sg);
+        reg32_3 -> clk_in (clk_in);
+        reg32_3 -> data_out (r_out);   
       }
 
 private:
-      //Declaro los modulos que utilizare
       alu *alu1;
       registerfile *registerfile1;
       InstrMemory *memory;
-      regs2 *reg2_1, *reg2_2;
+      regs2 *reg2_1;
       regs6 *reg6_1;
       regs32 *reg32_1, *reg32_2, *reg32_3;
 
-      //Y las señales tambien, siendo coherente con el tipo de datos que ellas transportaran
-      sc_signal<sc_uint<2> > dira, dirb, dirc, op, reg2_1_sg, reg2_2_sg, rc_sg; //dira, dirb y op son las señales que almecenaran la instruccion "picada"
+      sc_signal<sc_uint<2> > dira, dirb, op, reg2_1_sg; //dira, dirb y op son las señales que almecenaran la instruccion "picada"
       sc_signal<sc_uint<6> > reg6_1_sg, instr_sg;
-      sc_signal<sc_int<32> > da, db, dc, reg32_1_sg, reg32_2_sg, alu1_sg, gnd;
+      sc_signal<sc_int<32> > da, db, reg32_1_sg, reg32_2_sg, alu1_sg;
 
 
 

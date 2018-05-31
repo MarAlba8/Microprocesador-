@@ -20,13 +20,19 @@ int main(){
 
 
 	//MENU
+	system("clear");
+	cout << "\t\t\t\t\t\t**************************************" << endl;
+	cout << "\t\t\t\t\t\t**************************************" << endl;
+	cout << "\t\t\t\t\t\t**                                  **" << endl;
+	cout << "\t\t\t\t\t\t**   Bienvenido a la Cafetería MEK  **" << endl;
+	cout << "\t\t\t\t\t\t**                                  **" << endl;
+	cout << "\t\t\t\t\t\t**************************************" << endl;
+	cout << "\t\t\t\t\t\t**************************************" << endl << endl;
+	//cout << "\t\t\t\t\t\t\t*******************************"<< endl;
 
-	cout << "Bienvenido a la Cafetería MEK" << endl << endl;
-	cout << "-------------------------------------------------"<< endl;
-
-	cout << "Menú" << endl 
-	<< "1. Hacer Pedido" << endl 
-	<< "2. Salir" << endl;
+	cout << "\t\t\t\t\t\t\t\tMenú" << endl << endl
+	<< "\t\t\t\t\t\t\t1. Hacer Pedido" << endl 
+	<< "\t\t\t\t\t\t\t2. Salir" << endl;
 	cin >> opcion;
 
 	while(opcion!=2){
@@ -34,32 +40,32 @@ int main(){
 		while(opcion != 1)
 		{
 			cout << "Dato erroneo " << endl;
-			system("clear");
+			//system("clear");
 			cout << "Menú" << endl 
 			<< "1. Hacer Pedido" << endl 
 			<< "2. Salir" << endl;
 			cin >> opcion;
 		}
 
-		system("clear");
+		//system("clear");
 
 		opcion_s = "00";
-		cout <<"Tipo de café:" << endl 
-		<< "1. Frapuchino " << endl 
-		<< "2. Espresso" << endl 
-		<< "3. Capuchino" << endl 
-		<< "4. Mokachino" << endl;
+		cout <<"\t\t\t\t\t\t\tTipo de café:" << endl 
+		<< "\t\t\t\t\t\t\t1. Frapuchino " << endl 
+		<< "\t\t\t\t\t\t\t2. Espresso" << endl 
+		<< "\t\t\t\t\t\t\t3. Capuchino" << endl 
+		<< "\t\t\t\t\t\t\t4. Mokachino" << endl;
 		cin >> TipoCafe;
 
 		while(TipoCafe != "1" and TipoCafe != "2" and TipoCafe != "3" and TipoCafe != "4")
 		{
-			cout << "Dato erroneo " << endl;
+			cout << "\t\t\t\t\t\t\tDato erroneo " << endl;
 
-			cout <<"Tipo de café:" << endl 
-			<< "1. Frapuchino " << endl 
-			<< "2. Espresso" << endl 
-			<< "3. Capuchino" << endl 
-			<< "4. Mokachino" << endl;
+			cout <<"\t\t\t\t\t\t\tTipo de café:" << endl 
+			<< "\t\t\t\t\t\t\t1. Frapuchino " << endl 
+			<< "\t\t\t\t\t\t\t2. Espresso" << endl 
+			<< "\t\t\t\t\t\t\t3. Capuchino" << endl 
+			<< "\t\t\t\t\t\t\t4. Mokachino" << endl;
 			cin >> TipoCafe;
 		}	
 
@@ -72,15 +78,15 @@ int main(){
 		else 
 			TipoCafe = "11";
 
-		system("clear");
+		//system("clear");
 
-		cout << "Puede hacer un máximo de 3 pedidos, indique cantidad: "<< endl;
+		cout << "\t\t\t\t\tPuede hacer un máximo de 3 pedidos, indique cantidad: "<< endl;
 		cin >> cantidad;
 
 		while(cantidad != "1" and cantidad != "2" and cantidad != "3")// and cantidad != "4")
 		{
-			cout << "Dato erroneo " << endl;
-			cout << "Cantidad: "<< endl;
+			cout << "\t\t\t\t\t\t\tDato erroneo " << endl;
+			cout << "\t\t\t\t\t\t\tCantidad: "<< endl;
 			cin >> cantidad;	
 		}
 	
@@ -94,32 +100,11 @@ int main(){
 		cad1= opcion_s + TipoCafe + cantidad;
 
 		memoryFile << cad1 << "\n";
-/*
-		opcion_s = "01";
 
-		cout << "Monto a ingresar:" << endl;
-		cin >> monto;
-
-		while(monto != "0" and monto != "1" and monto != "2" and monto != "3"){
-			cout << "Dato erroneo " << endl;
-			cout << "Monto a ingresar:" << endl;
-			cin >> monto;
-		}
-
-		if (monto == "1")
-			monto= "01";
-		else if (monto == "2")
-			monto= "10";
-		else 
-			monto= "11";
-
-		cad1= opcion_s + TipoCafe + monto;
-
-		memoryFile << cad1 << "\n";*/
-		system("clear");
-		cout << "¿Desea hacer otro pedido?" << endl 
-		<< "1. Hacer Pedido" << endl 
-		<< "2. Salir" << endl;
+		//system("clear");
+		cout << "\t\t\t\t\t\t\t¿Desea hacer otro pedido?" << endl 
+		<< "\t\t\t\t\t\t\t1. Hacer Pedido" << endl 
+		<< "\t\t\t\t\t\t\t2. Salir" << endl;
 		cin >> opcion;
 	}
 
