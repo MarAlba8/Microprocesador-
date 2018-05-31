@@ -61,24 +61,36 @@ void operation(){
   }
   break;
 
+
+
   case 1:
   {
-    for(int i=0, i<rc_in, i++)
-     { 
-      if(ra_in.read() == 1)
+    if(ra_in.read() == 1)
       {
-         int aux = 0;
-         r_out.write(rb_in.read()* precio1);
+        //Precio 1$
+         r_out.write(rb_in.read()-1);
       }
 
-      if (ra_in.read() == 2)
-      {
-        int aux = 0;
-        r_out.write(rb_in.read()* precio2);
-      } 
 
-      r_out.write(r_out.read()+aux);
-    }
+     if(ra_in.read() == 2)
+      {
+        //Precio 2$
+         r_out.write(rb_in.read()-2);
+      }
+
+    if(ra_in.read() == 3)
+      {
+        //Precio 3$
+         r_out.write(rb_in.read()-3);
+      }
+
+     if(ra_in.read() == 1)
+      {
+        //Precio 1$
+         r_out.write(rb_in.read()-1);
+      }
+
+
   }
 
   break;
